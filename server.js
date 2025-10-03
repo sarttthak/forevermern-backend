@@ -71,7 +71,8 @@ app.use(cors({
 
 const allowedOrigins = [
   "http://localhost:5173",   // dev frontend
-  "https://forevermern-frontend.onrender.com" // prod frontend
+  "https://forevermern-frontend.onrender.com", // prod frontend
+  "https://forevermern-backend.onrender.com"
 ];
 
 app.use(cors({
