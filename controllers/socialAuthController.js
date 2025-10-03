@@ -13,7 +13,7 @@ const googleCallback = (req, res) => {
     passport.authenticate('google', { session: false }, async (err, profile) => {
         if (err || !profile) {
             // Redirect to frontend with error
-            const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+            const frontendUrl = process.env.FRONTEND_URL ;
             return res.redirect(`${frontendUrl}/login?error=${encodeURIComponent('Google authentication failed')}`);
         }
 
@@ -44,11 +44,11 @@ const googleCallback = (req, res) => {
 
             // Generate token and redirect
             const token = createToken(user._id);
-            const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+            const frontendUrl = process.env.FRONTEND_URL ;
             res.redirect(`${frontendUrl}/login?token=${token}`);
         } catch (error) {
             console.error('Google auth error:', error);
-            const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+            const frontendUrl = process.env.FRONTEND_URL ;
             res.redirect(`${frontendUrl}/login?error=${encodeURIComponent('Server error during authentication')}`);
         }
     })(req, res);
@@ -59,7 +59,7 @@ const githubCallback = (req, res) => {
     passport.authenticate('github', { session: false }, async (err, profile) => {
         if (err || !profile) {
             // Redirect to frontend with error
-            const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+            const frontendUrl = process.env.FRONTEND_URL ;
             return res.redirect(`${frontendUrl}/login?error=${encodeURIComponent('GitHub authentication failed')}`);
         }
 
@@ -98,11 +98,11 @@ const githubCallback = (req, res) => {
 
             // Generate token and redirect
             const token = createToken(user._id);
-            const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+            const frontendUrl = process.env.FRONTEND_URL ;
             res.redirect(`${frontendUrl}/login?token=${token}`);
         } catch (error) {
             console.error('GitHub auth error:', error);
-            const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+            const frontendUrl = process.env.FRONTEND_URL;
             res.redirect(`${frontendUrl}/login?error=${encodeURIComponent('Server error during authentication')}`);
         }
     })(req, res);
